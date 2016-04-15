@@ -10,7 +10,7 @@ You need to have ruby installed
 2. cd TwitterDm
 3. Create a app on twitter or add the existing consumer_key, consumer_secret, access_token, access_token_secret to file twitterapi.rb and make sure you have the permission for direct message.
 4. You need to install the following package.
-..* gem install twitter
-..* gem install redis
-..* gem install redis-server
+ * gem install twitter
+ * gem install redis
+ * gem install redis-server
 5. Execute ruby checker.rb
