@@ -43,7 +43,7 @@ def last_day?(date_string)
 end
 
 def plot_graph(filename)
-date = Array.new
+	date = Array.new
 	count = Array.new
 	line_num=0
 	text=File.open(filename).read
