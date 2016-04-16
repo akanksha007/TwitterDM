@@ -43,35 +43,35 @@ def last_day?(date_string)
 end
 
 def plot_graph(filename)
-	date = Array.new
-	count = Array.new
-	line_num=0
-	text=File.open(filename).read
-	text.gsub!(/\r\n?/, "\n")
-	text.each_line do |line|
-		d,c = line.split
-		date << d
-		count << c.to_i
-	end
-	Gnuplot.open do |gp|
-		Gnuplot::Plot.new(gp) do |plot|
-			plot.timefmt "'%d-%m-%Y'"
-			plot.title  "Twitter Follower"
-			plot.xlabel "Date"
-			plot.xdata "time"
-			plot.yrange '["50":"500"]' 
-			plot.xrange "< awk -v date=`date +'%s'` '{ if ($1 > date - 2592000) print $0; }' datafile"
-			plot.ylabel "No. of followers"
-			plot.data << Gnuplot::DataSet.new([date, count]) do |ds|
-				ds.with = "linespoints"
-				ds.title = ""
-				ds.using = "1:2"
-			end
-		end
-	end
-	if last_day?(Time.now.to_s)
-		File.open('graph_data.data', 'w') {|file| file.truncate(0) }
-	end
+  date = Array.new
+  count = Array.new
+  line_num=0
+  text=File.open(filename).read
+  text.gsub!(/\r\n?/, "\n")
+  text.each_line do |line|
+    d,c = line.split
+    date << d
+    count << c.to_i
+  end
+  Gnuplot.open do |gp|
+    Gnuplot::Plot.new(gp) do |plot|
+      plot.timefmt "'%d-%m-%Y'"
+      plot.title  "Twitter Follower"
+      plot.xlabel "Date"
+      plot.xdata "time"
+      plot.yrange '["50":"500"]' 
+      plot.xrange "< awk -v date=`date +'%s'` '{ if ($1 > date - 2592000) print $0; }' datafile"
+      plot.ylabel "No. of followers"
+      plot.data << Gnuplot::DataSet.new([date, count]) do |ds|
+        ds.with = "linespoints"
+        ds.title = ""
+	ds.using = "1:2"
+      end
+    end
+  end
+  if last_day?(Time.now.to_s)
+    File.open('graph_data.data', 'w') {|file| file.truncate(0) }
+  end
 end
 
 def send_thanks_to_new_followers(current_followers)
