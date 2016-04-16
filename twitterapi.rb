@@ -68,9 +68,9 @@ def plot_graph(filename)
 				ds.using = "1:2"
 			end
 		end
-		if last_day?(Time.now.to_s)
-			File.open('graph_data.data', 'w') {|file| file.truncate(0) }
-		end
+	end
+	if last_day?(Time.now.to_s)
+		File.open('graph_data.data', 'w') {|file| file.truncate(0) }
 	end
 end
 
