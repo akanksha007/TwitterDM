@@ -1,6 +1,7 @@
 ##Problem Statement
 Build a ruby script which when executed gets all the latest followers of Neha and sends them a DM "Thank you for the follow". 
 Use the twitter api for this. The script should have a method `setup_old_followers` which creates record of existing followers before the first run. On subsequent runs, the new followers are thanked and added to the old followers list so that they dont get thanked again. You may store this data in Redis. 
+Further plot the graph of followers.
 
 ##Prerequisite
 You need to have ruby installed
