@@ -46,7 +46,7 @@ def plot_graph(filename)
 date = Array.new
 	count = Array.new
 	line_num=0
-	text=File.open('graph_data.data').read
+	text=File.open(filename).read
 	text.gsub!(/\r\n?/, "\n")
 	text.each_line do |line|
 		d,c = line.split
